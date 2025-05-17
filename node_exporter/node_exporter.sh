@@ -8,7 +8,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-MONGO_HOST=mongodb.daws78s.online
+#MONGO_HOST=mongodb.daws78s.online
 
 VALIDATE(){
    if [ $1 -ne 0 ]
@@ -31,16 +31,16 @@ fi
 cd /opt
 VALIDATE $? "Moving to opt directory"
 
-wget https://github.com/prometheus/node_exporter/releases/download/v1.8.2/node_exporter-1.8.2.linux-amd64.tar.gz &>>$LOGFILE
+wget https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-amd64.tar.gz &>>$LOGFILE
 VALIDATE $? "Downloading Node exporter"
 
-tar -xf node_exporter-1.8.2.linux-amd64.tar.gz &>>$LOGFILE
+tar -xf node_exporter-1.9.1.linux-amd64.tar.gz &>>$LOGFILE
 VALIDATE $? "Extracted node exporter"
 
-mv node_exporter-1.8.2.linux-amd64 node_exporter &>>$LOGFILE
+mv node_exporter-1.9.1.linux-amd64 node_exporter &>>$LOGFILE
 VALIDATE $? "Renamed node exporter"
 
-cp /home/ec2-user/11.2.create_nodes_node_export/node-exporter/node_exporter.service /etc/systemd/system/node_exporter.service &>>$LOGFILE
+cp /home/ec2-user/11.2.create_nodes_node_exporter/node_exporter/node_exporter.service /etc/systemd/system/node_exporter.service &>>$LOGFILE
 VALIDATE $? "created node exporter service"
  
 systemctl daemon-reload &>>$LOGFILE
