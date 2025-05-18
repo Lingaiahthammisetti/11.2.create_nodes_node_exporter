@@ -51,3 +51,6 @@ VALIDATE $? "enabled node exporter"
 
 systemctl start node_exporter &>>$LOGFILE
 VALIDATE $? "Started node exporter"
+
+systemctl status node_exporter &>>$LOGFILE
+VALIDATE $? "node exporter status"

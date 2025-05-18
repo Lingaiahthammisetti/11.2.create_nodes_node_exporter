@@ -4,7 +4,7 @@ resource "aws_instance" "nodes_ec2" {
     ami           = data.aws_ami.rhel_info.id
     instance_type = each.value
     vpc_security_group_ids = [var.allow_everything]
-    user_data = file("${path.module}/node_exporter/node_exporter.sh")
+    #user_data = file("${path.module}/node_exporter/node_exporter.sh")
 
     tags = {
         Name = each.key
