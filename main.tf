@@ -16,6 +16,6 @@ resource "aws_route53_record" "nodes_r53" {
     name    = "${each.key}.${var.domain_name}"
     type    = "A"
     ttl     = 1
-    records = [aws_instance.nodes_ec2.public_ip]
+    records = each.key == "" ? [] : [each.value.public_ip]
     allow_overwrite = true
 }
