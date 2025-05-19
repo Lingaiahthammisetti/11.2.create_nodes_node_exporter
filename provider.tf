@@ -6,10 +6,10 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "prometheuse-ec2-remote-state"
+    bucket = "monitoring-remote-state"
     key    = "nodes-node-exporter-install"
     region = "us-east-1"
-    dynamodb_table = "prometheuse-ec2-locking"
+    dynamodb_table = "monitoring-locking"
     }
   }
 provider "aws" {
