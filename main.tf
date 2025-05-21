@@ -34,6 +34,7 @@ resource "aws_instance" "nodes_ec2" {
 
     tags = {
         Name = each.key
+        Monitoring = "true"
     }
 }
 resource "aws_route53_record" "nodes_r53" {
