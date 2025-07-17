@@ -5,7 +5,14 @@ resource "aws_instance" "nodes_ec2" {
     instance_type = each.value
     vpc_security_group_ids = [var.allow_everything]
     #user_data = file("${path.module}/node_exporter/node_exporter.sh")
-
+    root_block_device {
+        encrypted             = false
+        volume_type           = "gp3"
+        volume_size           = 50
+        iops                  = 3000
+        throughput            = 125
+        delete_on_termination = true
+    }
     user_data = <<-EOF
                 #!/bin/bash
                 cd /opt
